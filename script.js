@@ -39,7 +39,9 @@ let money = 20;
 let seeds = 0;
 let berries = 0;
 
+load();
 updateValues();
+window.setInterval(save(), 300000);
 
 /* shop functions */
 
@@ -123,6 +125,22 @@ function collectBerry(r, c) {
 }
 
 /* other functions */
+
+function save() {
+    const save = {
+        money: money,
+        seeds: seeds,
+        berries: berries
+    }
+    localStorage.setItem("save", JSON.stringify(save));
+}
+
+function load() {
+    const save = localStorage.getItem("save");
+    if (typeof save.money !== "undefined") money = save.money;
+    if (typeof save.seeds !== "undefined") seeds = save.seeds;
+    if (typeof save.berries !== "undefined") berries = save.berries;
+}
 
 function updateValues() {
     document.getElementById("money").innerHTML = "money: $" + money;
