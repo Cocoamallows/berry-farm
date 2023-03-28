@@ -1,10 +1,8 @@
 /*
     notes:
-    - check if farmland is already planted
     - different kinds of berries
     - sections: shop, farm, log (quests?)
     - automated farming
-    - add saving
 */
 
 /* variables + setup */
@@ -39,6 +37,7 @@ let money = 20;
 let seeds = 0;
 let berries = 0;
 
+save(); // very good code
 load();
 updateValues();
 window.setInterval(save(), 300000);
