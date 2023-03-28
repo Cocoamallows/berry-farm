@@ -95,7 +95,7 @@ function plantSeed(r, c, berry) {
         document.getElementById(id).innerHTML = "seconds left: " + seconds;
         const seedInterval = setInterval(function() {
             seconds--;
-            if (seconds <= 0) {
+            if (seconds <= 1) {
                 clearInterval(seedInterval);
             }
             document.getElementById(id).innerHTML = "seconds left: " + seconds;
