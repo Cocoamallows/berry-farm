@@ -1,7 +1,7 @@
 /*
     notes:
     - different kinds of berries
-    - sections: shop, farm, log (quests?)
+    - sections: shop, farm, log, encyclopedia (quests?)
     - automated farming
 */
 
@@ -37,7 +37,6 @@ let money = 20;
 let seeds = 0;
 let berries = 0;
 
-save(); // very good code
 load();
 updateValues();
 window.setInterval(save(), 300000);
@@ -135,7 +134,7 @@ function save() {
 }
 
 function load() {
-    const save = localStorage.getItem("save");
+    const save = JSON.parse(localStorage.getItem("save"));
     if (typeof save.money !== "undefined") money = save.money;
     if (typeof save.seeds !== "undefined") seeds = save.seeds;
     if (typeof save.berries !== "undefined") berries = save.berries;
