@@ -40,6 +40,10 @@ let berries = 0;
 load();
 updateValues();
 window.setInterval(save(), 300000);
+window.onbeforeunload = function() {
+    save();
+    return null; // not sure why this works but it does thank you stackoverflow
+}
 
 /* shop functions */
 
@@ -53,7 +57,7 @@ function buySeeds() {
         seeds += seedAmt;
         updateValues();
     } else {
-        alert("not enough money!");
+        log("not enough money!");
     }
 }
 
@@ -65,7 +69,7 @@ function sellBerry(berry) {
         berries--;
         updateValues();
     } else {
-        alert("no more berries left!");
+        log("no more berries left!");
     }
 }
 
@@ -77,7 +81,7 @@ function farmHandler(r, c) {
     if (farmValue == 0) {
         plantSeed(r, c, "berry"); // change later
     } else if (farmValue == 1) {
-        alert("wait for the berry to finish growing!");
+        log("wait for the berry to finish growing!");
     } else {
         collectBerry(r, c);
     }
@@ -108,7 +112,7 @@ function plantSeed(r, c, berry) {
         }, 1000 * getBaseTime(berry));
         
     } else {
-        alert("buy some seeds first!");
+        log("buy some seeds first!");
     }
 }
 
@@ -140,6 +144,14 @@ function load() {
     if (typeof save.berries !== "undefined") berries = save.berries;
 }
 
+function changeTab(tab) {
+    const elems = document.getElementsByClassName("tab");
+    for (const e of elems) {
+        e.style.display = "none";
+    }
+    document.querySelector("." + tab).style.display = "flex";
+}
+
 function updateValues() {
     document.getElementById("money").innerHTML = "money: $" + money;
     document.getElementById("seeds").innerHTML = "seeds: " + seeds;
@@ -162,4 +174,9 @@ function getBaseTime(item) {
     } else {
         console.log("broken call to getBaseCost (item = " + item + ")");
     }
+}
+
+function log(msg) {
+    const text = document.querySelector(".log").innerHTML;
+    document.getElementById("log").innerHTML = msg + "\n\n" + text;
 }

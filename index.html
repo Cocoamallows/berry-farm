@@ -8,45 +8,72 @@
         <link rel="icon" type="image/png" href="icon.png">
     </head>
     <body>
-        <div class="values">
-            <p id="money"></p>
-            <p id="seeds"></p>
-            <p id="berries"></p>
+        <div class="header">
+            <div class="values">
+                <p id="money"></p>
+                <p id="seeds"></p>
+                <p id="berries"></p>
+            </div>
+            <div class="tabs">
+                <button onClick="changeTab('main')" id="main">main game</button>
+                <button onClick="changeTab('settings')" id="settings">settings</button>
+            </div>
+            <hr>
         </div>
 
-        <button onClick="buySeeds()">buy a seed packet (-$5)</button>
-        <button onClick="sellBerry('berry')">sell a berry (+$1)</button>
-        <button onClick="save()">save</button>
+        <div class="main tab" style="display:flex">
+            <div class="left">
+                <div class="shop">
+                    <p class="centered"><u>shop</u></p>
+                    <button onClick="buySeeds()">buy a seed packet (-$5)</button>
+                    <button onClick="sellBerry('berry')">sell a berry (+$1)</button>
+                </div>
 
-        <hr />
+                <hr />
+                <div class="farm">
+                    <p class="centered" id="farm-label"><u>farm</u></p>
+                    <button onClick="farmHandler(1, 1)" id="space-r1c1">empty</button>
+                    <button onClick="farmHandler(1, 2)" id="space-r1c2">empty</button>
+                    <button onClick="farmHandler(1, 3)" id="space-r1c3">empty</button>
+                    <button onClick="farmHandler(1, 4)" id="space-r1c4">empty</button>
+                    <button onClick="farmHandler(1, 5)" id="space-r1c5">empty</button>
+                    <button onClick="farmHandler(2, 1)" id="space-r2c1">empty</button>
+                    <button onClick="farmHandler(2, 2)" id="space-r2c2">empty</button>
+                    <button onClick="farmHandler(2, 3)" id="space-r2c3">empty</button>
+                    <button onClick="farmHandler(2, 4)" id="space-r2c4">empty</button>
+                    <button onClick="farmHandler(2, 5)" id="space-r2c5">empty</button>
+                    <button onClick="farmHandler(3, 1)" id="space-r3c1">empty</button>
+                    <button onClick="farmHandler(3, 2)" id="space-r3c2">empty</button>
+                    <button onClick="farmHandler(3, 3)" id="space-r3c3">empty</button>
+                    <button onClick="farmHandler(3, 4)" id="space-r3c4">empty</button>
+                    <button onClick="farmHandler(3, 5)" id="space-r3c5">empty</button>
+                    <button onClick="farmHandler(4, 1)" id="space-r4c1">empty</button>
+                    <button onClick="farmHandler(4, 2)" id="space-r4c2">empty</button>
+                    <button onClick="farmHandler(4, 3)" id="space-r4c3">empty</button>
+                    <button onClick="farmHandler(4, 4)" id="space-r4c4">empty</button>
+                    <button onClick="farmHandler(4, 5)" id="space-r4c5">empty</button>
+                    <button onClick="farmHandler(5, 1)" id="space-r5c1">empty</button>
+                    <button onClick="farmHandler(5, 2)" id="space-r5c2">empty</button>
+                    <button onClick="farmHandler(5, 3)" id="space-r5c3">empty</button>
+                    <button onClick="farmHandler(5, 4)" id="space-r5c4">empty</button>
+                    <button onClick="farmHandler(5, 5)" id="space-r5c5">empty</button>
+                </div>
+            </div>
 
-        <div class="container">
-            <button onClick="farmHandler(1, 1)" id="space-r1c1">empty</button>
-            <button onClick="farmHandler(1, 2)" id="space-r1c2">empty</button>
-            <button onClick="farmHandler(1, 3)" id="space-r1c3">empty</button>
-            <button onClick="farmHandler(1, 4)" id="space-r1c4">empty</button>
-            <button onClick="farmHandler(1, 5)" id="space-r1c5">empty</button>
-            <button onClick="farmHandler(2, 1)" id="space-r2c1">empty</button>
-            <button onClick="farmHandler(2, 2)" id="space-r2c2">empty</button>
-            <button onClick="farmHandler(2, 3)" id="space-r2c3">empty</button>
-            <button onClick="farmHandler(2, 4)" id="space-r2c4">empty</button>
-            <button onClick="farmHandler(2, 5)" id="space-r2c5">empty</button>
-            <button onClick="farmHandler(3, 1)" id="space-r3c1">empty</button>
-            <button onClick="farmHandler(3, 2)" id="space-r3c2">empty</button>
-            <button onClick="farmHandler(3, 3)" id="space-r3c3">empty</button>
-            <button onClick="farmHandler(3, 4)" id="space-r3c4">empty</button>
-            <button onClick="farmHandler(3, 5)" id="space-r3c5">empty</button>
-            <button onClick="farmHandler(4, 1)" id="space-r4c1">empty</button>
-            <button onClick="farmHandler(4, 2)" id="space-r4c2">empty</button>
-            <button onClick="farmHandler(4, 3)" id="space-r4c3">empty</button>
-            <button onClick="farmHandler(4, 4)" id="space-r4c4">empty</button>
-            <button onClick="farmHandler(4, 5)" id="space-r4c5">empty</button>
-            <button onClick="farmHandler(5, 1)" id="space-r5c1">empty</button>
-            <button onClick="farmHandler(5, 2)" id="space-r5c2">empty</button>
-            <button onClick="farmHandler(5, 3)" id="space-r5c3">empty</button>
-            <button onClick="farmHandler(5, 4)" id="space-r5c4">empty</button>
-            <button onClick="farmHandler(5, 5)" id="space-r5c5">empty</button>
-        </container>
+            <div class="separator"></div>
+
+            <div class="right">
+                <div class="log">
+                    <p class="centered"><u>log</u></p>
+                    <p id="log"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="settings tab" style="display:none">
+            <button onClick="save()">save</button>
+            <button onClick="load()">load</button>
+        </div>
 
         <script src="script.js" async defer></script>
     </body>
